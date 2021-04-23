@@ -8,6 +8,12 @@ input: today is the first day of the rest of my life
 output: life my of rest the of day first the is today
 ````
 
+## Index
+- [Run it locally](#run-it-locally)
+- [Run it from the cloud](#run-it-from-the-cloud)
+- [Test the application](#test-the-application)
+- [Solution approach](#solution-approach)
+
 ## Run it locally
 To run the api locally it is necessary to clone this repository from Github:
 ````
@@ -72,3 +78,11 @@ go test -covermode=set -coverprofile=coverage.out ./...
 ````
 
 ## Solution approach
+The approach I followed was creating an API who gives an endpoint to reverse an input sentence. 
+This endpoint is a post and receives in the body of the request the message to reverse.
+
+For the API architecture I used an Hexagonal Architecture (maybe is too much for this problem) and implemented the inversion of control through dependency injection.
+
+The Revert function is the core of the application.
+It takes an request struct who has the message to reverse as input.
+Then It splits the message into an slice and iterate the slice to build the response.
