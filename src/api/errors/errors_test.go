@@ -1,7 +1,8 @@
-package domain
+package errors
 
 import (
 	"errors"
+	"github.com/lucaspichi06/strings-reverter/src/api/domain"
 	"net/http"
 	"reflect"
 	"testing"
@@ -14,14 +15,14 @@ func TestNewBadRequestAppError(t *testing.T) {
 	tests := []struct {
 		name string
 		args args
-		want appError
+		want domain.AppError
 	}{
 		// Test Uses Cases.
-		{"bad request error", args{message: "content has an invalid format"}, appError{
+		{"bad request error", args{message: "content has an invalid format"}, domain.AppError{
 			ErrorMessage: "content has an invalid format",
 			ErrorCode:    "bad_request",
 			ErrorStatus:  http.StatusBadRequest,
-			ErrorCause:   CauseList{},
+			ErrorCause:   domain.CauseList{},
 		}},
 	}
 	for _, tt := range tests {
@@ -41,20 +42,20 @@ func TestNewInternalServerAppError(t *testing.T) {
 	tests := []struct {
 		name string
 		args args
-		want appError
+		want domain.AppError
 	}{
 		// Test Uses Cases.
-		{"internal server error without cause", args{message: "internal server error"}, appError{
+		{"internal server error without cause", args{message: "internal server error"}, domain.AppError{
 			ErrorMessage: "internal server error",
 			ErrorCode:    "internal_server_error",
 			ErrorStatus:  http.StatusInternalServerError,
-			ErrorCause:   CauseList{},
+			ErrorCause:   domain.CauseList{},
 		}},
-		{"internal server error with cause", args{message: "internal server error", err: errors.New("test error")}, appError{
+		{"internal server error with cause", args{message: "internal server error", err: errors.New("test error")}, domain.AppError{
 			ErrorMessage: "internal server error",
 			ErrorCode:    "internal_server_error",
 			ErrorStatus:  http.StatusInternalServerError,
-			ErrorCause: CauseList{
+			ErrorCause: domain.CauseList{
 				"test error",
 			},
 		}},
@@ -73,7 +74,7 @@ func Test_appError_Error(t *testing.T) {
 		ErrorMessage string
 		ErrorCode    string
 		ErrorStatus  int
-		ErrorCause   CauseList
+		ErrorCause   domain.CauseList
 	}
 	tests := []struct {
 		name   string
@@ -85,7 +86,7 @@ func Test_appError_Error(t *testing.T) {
 			ErrorMessage: "internal server error",
 			ErrorCode:    "internal_server_error",
 			ErrorStatus:  http.StatusInternalServerError,
-			ErrorCause: CauseList{
+			ErrorCause: domain.CauseList{
 				"test error",
 			},
 		}, "an error of type: internal_server_error with value: internal server error and cause: [test error]"},
@@ -97,7 +98,7 @@ func Test_appError_Error(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ae := appError{
+			ae := domain.AppError{
 				ErrorMessage: tt.fields.ErrorMessage,
 				ErrorCode:    tt.fields.ErrorCode,
 				ErrorStatus:  tt.fields.ErrorStatus,
