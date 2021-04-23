@@ -32,6 +32,26 @@ curl --location --request POST 'http://localhost:8080/revert_string' \
 --data-raw '{
     "message": "today is the first day of the rest of my life"
 }'
+`````
+
+It will respond in the following way:
+````JSON
+{
+    "message_to_revert": "today is the first day of the rest of my life",
+    "reverted_message": "life my of rest the of day first the is today"
+}
+````
+
+In case of error it will respond with the right status code and the following response:
+````JSON
+{
+    "message": "error while reverting the message",
+    "error": "internal_server_error",
+    "status": 500,
+    "cause": [
+        "ups... there is nothing to revert"
+    ]
+}
 ````
 
 Besides that, you have another endpoint to check the API health status:
