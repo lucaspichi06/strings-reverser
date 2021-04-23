@@ -73,7 +73,7 @@ curl --location --request POST 'https://strings-reverter.herokuapp.com/revert_st
 
 And to see the API health status:
 ````bash
-curl --location --request GET 'http://localhost:8080/ping'
+curl --location --request GET 'https://strings-reverter.herokuapp.com/ping'
 ````
 
 #### **** You can find the postman collection in the utils folder! ****
