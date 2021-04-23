@@ -39,7 +39,7 @@ Besides that, you have another endpoint to check the API health status:
 curl --location --request GET 'http://localhost:8080/ping'
 ````
 
-If the API is running successfully, it has to return the word pong 
+If the API is running successfully, it has to return the word ```pong``` 
 
 ## Run it from the cloud
 If you don't want to clone the repository and you need to test the API you can to call this application using the following curl  (you can use Postman too):
