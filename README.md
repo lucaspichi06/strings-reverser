@@ -82,6 +82,7 @@ The approach I followed was creating an API who gives an endpoint to reverse an 
 This endpoint is a post and receives in the body of the request the message to reverse.
 
 For the API architecture I used an Hexagonal Architecture (maybe is too much for this problem) and implemented the inversion of control through dependency injection.
+![Hexagonal Architecture](https://miro.medium.com/max/1718/1*yR4C1B-YfMh5zqpbHzTyag.png)
 
 The Revert function is the core of the application.
 It takes an request struct who has the message to reverse as input.
