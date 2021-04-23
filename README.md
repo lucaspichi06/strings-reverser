@@ -26,7 +26,7 @@ go run src/api/main.go
 ````
 
 Now you have the API running in the port :8080 so you can invoke the endpoint with the following curl (you can use Postman too):
-````
+````bash
 curl --location --request POST 'http://localhost:8080/revert_string' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -55,7 +55,7 @@ In case of error it will respond with the right status code and the following re
 ````
 
 Besides that, you have another endpoint to check the API health status:
-````
+````bash
 curl --location --request GET 'http://localhost:8080/ping'
 ````
 
@@ -63,7 +63,7 @@ If the API is running successfully, it has to return the word ```pong```
 
 ## Run it from the cloud
 If you don't want to clone the repository and you need to test the API you can to call this application using the following curl  (you can use Postman too):
-````
+````bash
 curl --location --request POST 'https://strings-reverter.herokuapp.com/revert_string' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -72,7 +72,7 @@ curl --location --request POST 'https://strings-reverter.herokuapp.com/revert_st
 ````
 
 And to see the API health status:
-````
+````bash
 curl --location --request GET 'http://localhost:8080/ping'
 ````
 
