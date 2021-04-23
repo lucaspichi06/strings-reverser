@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "de9b24bc-3b2a-4878-b9e7-bf0196997279",
+		"name": "String Reverser",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "String Reverser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"today is the first day of the rest of my life\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://strings-reverter.herokuapp.com/revert_string",
+					"protocol": "https",
+					"host": [
+						"strings-reverter",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"revert_string"
+					]
+				},
+				"description": "Reverse the words in a given sentence"
+			},
+			"response": []
+		},
+		{
+			"name": "Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://strings-reverter.herokuapp.com/ping",
+					"protocol": "https",
+					"host": [
+						"strings-reverter",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"ping"
+					]
+				},
+				"description": "Checks the API health status"
+			},
+			"response": []
+		}
+	]
+}
