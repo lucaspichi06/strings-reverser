@@ -139,4 +139,3 @@ func TestHandleReversion_InternalServerError(t *testing.T) {
 	assert.Equal(t, http.StatusInternalServerError, w.Code)
 	assert.Contains(t, responseMap["message"], "error while reverting the message")
 }
-

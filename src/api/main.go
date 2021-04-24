@@ -17,4 +17,3 @@ func main() {
 		log.Println("[main][message: error running server]", err)
 	}
 }
-
