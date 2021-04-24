@@ -22,6 +22,10 @@ func Test_reversion_Revert(t *testing.T) {
 			RevertedMessage: "revert to message test",
 		}, false},
 		{"empty message to revert", args{request: &domain.ReversionRequest{Message: ""}}, nil, true},
+		{"invalid characters", args{request: &domain.ReversionRequest{Message: "|@#¢∞¬÷“”≠´‚¡'¿?=)(/&%$·!ªº\"`¨¨ç+æœ€ø®ƒå∫ √å∂å© √µß§"}}, &domain.ReversionResponse{
+			MessageToRevert: "|@#¢∞¬÷“”≠´‚¡'¿?=)(/&%$·!ªº\"`¨¨ç+æœ€ø®ƒå∫ √å∂å© √µß§",
+			RevertedMessage: "√µß§ √å∂å© |@#¢∞¬÷“”≠´‚¡'¿?=)(/&%$·!ªº\"`¨¨ç+æœ€ø®ƒå∫",
+		}, false},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
